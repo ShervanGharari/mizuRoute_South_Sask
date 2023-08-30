@@ -1,0 +1,75 @@
+! ****************************************************************************************************************************
+! ***** DEFINITION OF MODEL CONTROL INFORMATION ******************************************************************************
+! ****************************************************************************************************************************
+! ****************************************************************************************************************************
+! Note: lines starting with "!" are treated as comment lines -- there is no limit on the number of comment lines.
+!     lines starting with <xxx> are read till "!"
+!
+! ****************************************************************************************************************************
+! RUN CONTROL
+! --------------------------
+<case_name>             South_Sask_HDMA                              ! simulation name - used for output netcdf name
+<sim_start>             1970-01-01                                   ! time of simulation start (year-month-day)
+<sim_end>               2020-01-01                                   ! time of simulation end (year-month-day)
+<route_opt>             1                                            ! option for routing schemes 0-> both, 1->IRF, 2->KWT otherwise error
+<is_lake_sim>           T                                            ! identifies the lake simulation is ON
+<restart_write>         last                                         ! output state of the last state
+! ****************************************************************************************************************************
+! DEFINE DIRECTORIES
+! --------------------------
+<ancil_dir>             ./ancillary_data/                            ! directory containing ancillary data (river segment data,
+<input_dir>             ./input/                                     ! directory containing input data
+<output_dir>            ./output/                                    ! directory containing output data
+<restart_dir>           ./output/                                    ! Directory containing restart data
+! ****************************************************************************************************************************
+! DEFINE FINE NAME AND DIMENSIONS
+! ---------------------------------------
+<fname_ntopOld>         Network_topology_HDMA_no_lake.nc             ! name of netCDF containing river segment data
+<dname_sseg>            n                                            ! dimension name of the stream segments
+<dname_nhru>            n                                            ! dimension name of the HRUs
+! ****************************************************************************************************************************
+! DEFINE DESIRED VARIABLES FOR THE NETWORK TOPOLOGY
+! ---------------------------------------------------------
+<seg_outlet>            -9999                                        ! seg_id of outlet streamflow segment -9999 for all segments
+! ****************************************************************************************************************************
+! DEFINE RUNOFF FILE
+! ----------------------------------
+<fname_qsim>            netcdf_name.txt                              ! name of netCDF containing the HRU runoff
+<vname_qsim>            runoff                                       ! name of HRU runoff variable
+<vname_evapo>           evapw                                        ! name of HRU evaporation variable
+<vname_precip>          prec                                         ! name of HRU precipitation variable
+<vname_time>            time                                         ! name of time variable in the runoff file
+<dname_time>            time                                         ! name of time dimension
+<dname_xlon>            lon                                          ! name of x(j) dimension
+<dname_ylat>            lat                                          ! name of y(i) dimension
+<units_qsim>            mm/day                                       ! units of runoff
+<dt_qsim>               86400                                        ! time interval of the runoff
+! ****************************************************************************************************************************
+! DEFINE RUNOFF MAPPING FILE
+! ----------------------------------
+<is_remap>              T                                            ! logical whether or not runnoff needs to be mapped to >
+<fname_remap>           South_Sasktoon_HDMA_no_lake_remapping.nc     ! name of netCDF containing poly-poly mapping data
+<vname_hruid_in_remap>  polyid                                       ! name of variable contating areal weights of runoff HR>
+<vname_weight>          weight                                       ! name of variable contating areal weights of runoff HR>
+<vname_num_qhru>        frequency                                    ! name of variable containing numbers of runoff HRUs wi>
+<vname_i_index>         i_index                                      ! name of ylat index
+<vname_j_index>         j_index                                      ! name of xlon index
+<dname_hru_remap>       polyid                                       ! name of hru dimension name
+<dname_data_remap>      intersect                                    ! name of data dimension name
+! ****************************************************************************************************************************
+! Spatially constant parameter Namelist name
+! ---------------------------
+<param_nml>             param.nml.default                            ! namelist parameters
+! ****************************************************************************************************************************
+! Dictionary to map variable names
+! ---------------------------
+<varname_area>             area                                      ! name of variable holding hru area
+<varname_length>           length                                    ! name of variable holding segment length
+<varname_slope>            slope                                     ! name of variable holding segment slope
+<varname_HRUid>            ID                                        ! name of variable holding HRU id
+<varname_hruSegId>         ID                                        ! name of variable holding the stream segment below each HRU
+<varname_segId>            ID                                        ! name of variable holding the ID of each stream segment
+<varname_downSegId>        ID_next                                   ! name of variable holding the ID of the next downstream segment
+! ****************************************************************************************************************************
+! ****************************************************************************************************************************
+! ****************************************************************************************************************************

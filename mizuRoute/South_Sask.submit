@@ -1,0 +1,84 @@
+#!/bin/bash
+#SBATCH --account=rpp-kshook
+#SBATCH --ntasks=1
+#SBATCH --mem-per-cpu=1G
+#SBATCH --time=1:00:00           # time (DD-HH:MM)
+#SBATCH --job-name=lake_victoria
+#SBATCH --error=errors_lake_victoria
+
+# load the needed libraries
+module load intel/2020.1.217 openmpi netcdf netcdf-fortran pnetcdf
+
+# make the exe executable
+Chmod +x route_runoff.exe
+
+# simulation# case0
+./route_runoff.exe ./settings/lake_victoria_0.control 
+mv case_0_1.000.r.2014-01-01-00000.nc case_0_1.000.r.1979-01-01-00000.nc 
+./route_runoff.exe ./settings/lake_victoria_0_restart.control 
+
+# case1
+./route_runoff.exe ./settings/lake_victoria_1.control 
+mv case_1_0.747.r.2014-01-01-00000.nc case_1_0.747.r.1979-01-01-00000.nc 
+./route_runoff.exe ./settings/lake_victoria_1_restart.control 
+
+# case2
+./route_runoff.exe ./settings/lake_victoria_2.control 
+mv case_2_0.650.r.2014-01-01-00000.nc case_2_0.650.r.1979-01-01-00000.nc 
+./route_runoff.exe ./settings/lake_victoria_2_restart.control 
+
+# case3
+./route_runoff.exe ./settings/lake_victoria_3.control 
+mv case_3_0.544.r.2014-01-01-00000.nc case_3_0.544.r.1979-01-01-00000.nc 
+./route_runoff.exe ./settings/lake_victoria_3_restart.control 
+
+# case4
+./route_runoff.exe ./settings/lake_victoria_4.control 
+mv case_4_0.732.r.2014-01-01-00000.nc case_4_0.732.r.1979-01-01-00000.nc 
+./route_runoff.exe ./settings/lake_victoria_4_restart.control 
+
+# case5
+./route_runoff.exe ./settings/lake_victoria_5.control 
+mv case_5_0.699.r.2014-01-01-00000.nc case_5_0.699.r.1979-01-01-00000.nc 
+./route_runoff.exe ./settings/lake_victoria_5_restart.control 
+
+# case6
+./route_runoff.exe ./settings/lake_victoria_6.control 
+mv case_6_0.723.r.2014-01-01-00000.nc case_6_0.723.r.1979-01-01-00000.nc 
+./route_runoff.exe ./settings/lake_victoria_6_restart.control 
+
+# case7
+./route_runoff.exe ./settings/lake_victoria_7.control 
+mv case_7_0.660.r.2014-01-01-00000.nc case_7_0.660.r.1979-01-01-00000.nc 
+./route_runoff.exe ./settings/lake_victoria_7_restart.control 
+
+# case8
+./route_runoff.exe ./settings/lake_victoria_8.control 
+mv case_8_0.766.r.2014-01-01-00000.nc case_8_0.766.r.1979-01-01-00000.nc 
+./route_runoff.exe ./settings/lake_victoria_8_restart.control 
+
+# case9
+./route_runoff.exe ./settings/lake_victoria_9.control 
+mv case_9_0.708.r.2014-01-01-00000.nc case_9_0.708.r.1979-01-01-00000.nc 
+./route_runoff.exe ./settings/lake_victoria_9_restart.control 
+
+# case10
+./route_runoff.exe ./settings/lake_victoria_10.control 
+mv case_10_0.711.r.2014-01-01-00000.nc case_10_0.711.r.1979-01-01-00000.nc 
+./route_runoff.exe ./settings/lake_victoria_10_restart.control 
+
+# case11
+./route_runoff.exe ./settings/lake_victoria_11.control 
+mv case_11_0.766.r.2014-01-01-00000.nc case_11_0.766.r.1979-01-01-00000.nc 
+./route_runoff.exe ./settings/lake_victoria_11_restart.control 
+
+# case12
+./route_runoff.exe ./settings/lake_victoria_12.control 
+mv case_12_0.768.r.2014-01-01-00000.nc case_12_0.768.r.1979-01-01-00000.nc 
+./route_runoff.exe ./settings/lake_victoria_12_restart.control 
+
+# case13
+./route_runoff.exe ./settings/lake_victoria_13.control 
+mv case_13_0.674.r.2014-01-01-00000.nc case_13_0.674.r.1979-01-01-00000.nc 
+./route_runoff.exe ./settings/lake_victoria_13_restart.control 
+

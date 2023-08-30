@@ -1,0 +1,133 @@
+! ****************************************************************************************************************************
+! ***** DEFINITION OF MODEL CONTROL INFORMATION ******************************************************************************
+! ****************************************************************************************************************************
+! ****************************************************************************************************************************
+! Note: lines starting with "!" are treated as comment lines -- there is no limit on the number of comment lines.
+!     lines starting with <xxx> are read till "!"
+!
+! ****************************************************************************************************************************
+! RUN CONTROL
+! --------------------------
+<case_name>             South_Sask_HDMA_lake_Doll                    ! simulation name - used for output netcdf name
+<sim_start>             1970-01-01                                   ! time of simulation start (year-month-day)
+<sim_end>               2020-01-01                                   ! time of simulation end (year-month-day)
+<route_opt>             1                                            ! option for routing schemes 0-> both, 1->IRF, 2->KWT otherwise error
+<restart_write>         last                                         ! output state of the last state
+<is_lake_sim>           T                                            ! simulated lakes and reservoirs
+! ****************************************************************************************************************************
+! DEFINE DIRECTORIES
+! --------------------------
+<ancil_dir>             ./ancillary_data/                            ! directory containing ancillary data (river segment data,
+<input_dir>             ./input/                                     ! directory containing input data
+<output_dir>            ./output/                                    ! directory containing output data
+<restart_dir>           ./output/                                    ! Directory containing restart data
+! ****************************************************************************************************************************
+! DEFINE FINE NAME AND DIMENSIONS
+! ---------------------------------------
+<fname_ntopOld>         Network_topology_HDMA_with_lake.nc           ! name of netCDF containing river segment data
+<dname_sseg>            n                                            ! dimension name of the stream segments
+<dname_nhru>            n                                            ! dimension name of the HRUs
+! ****************************************************************************************************************************
+! DEFINE DESIRED VARIABLES FOR THE NETWORK TOPOLOGY
+! ---------------------------------------------------------
+<seg_outlet>            -9999                                        ! seg_id of outlet streamflow segment -9999 for all segments
+! ****************************************************************************************************************************
+! DEFINE RUNOFF FILE
+! ----------------------------------
+<fname_qsim>            netcdf_name.txt                              ! name of netCDF containing the HRU runoff
+<vname_qsim>            runoff                                       ! name of HRU runoff variable
+<vname_evapo>           evapw                                        ! name of HRU evaporation variable
+<vname_precip>          prec                                         ! name of HRU precipitation variable
+<vname_time>            time                                         ! name of time variable in the runoff file
+<dname_time>            time                                         ! name of time dimension
+<dname_xlon>            lon                                          ! name of x(j) dimension
+<dname_ylat>            lat                                          ! name of y(i) dimension
+<units_qsim>            mm/day                                       ! units of runoff
+<dt_qsim>               86400                                        ! time interval of the runoff
+<input_fillvalue>       -9999  !
+! ****************************************************************************************************************************
+! DEFINE RUNOFF MAPPING FILE
+! ----------------------------------
+<is_remap>              T                                            ! logical whether or not runnoff needs to be mapped to >
+<fname_remap>           South_Sasktoon_HDMA_lake_remapping.nc        ! name of netCDF containing poly-poly mapping data
+<vname_hruid_in_remap>  polyid                                       ! name of variable contating areal weights of runoff HR>
+<vname_weight>          weight                                       ! name of variable contating areal weights of runoff HR>
+<vname_num_qhru>        frequency                                    ! name of variable containing numbers of runoff HRUs wi>
+<vname_i_index>         i_index                                      ! name of ylat index
+<vname_j_index>         j_index                                      ! name of xlon index
+<dname_hru_remap>       polyid                                       ! name of hru dimension name
+<dname_data_remap>      intersect                                    ! name of data dimension name
+! ****************************************************************************************************************************
+! Spatially constant parameter Namelist name
+! ---------------------------
+<param_nml>             param.nml.default                            ! namelist parameters
+! ****************************************************************************************************************************
+! Dictionary to map variable names
+! ---------------------------
+<varname_area>             area                                      ! name of variable holding hru area
+<varname_length>           length                                    ! name of variable holding segment length
+<varname_slope>            slope                                     ! name of variable holding segment slope
+<varname_HRUid>            ID                                        ! name of variable holding HRU id
+<varname_hruSegId>         ID                                        ! name of variable holding the stream segment below each HRU
+<varname_segId>            ID                                        ! name of variable holding the ID of each stream segment
+<varname_downSegId>        ID_next                                   ! name of variable holding the ID of the next downstream segment
+<varname_islake>           is_lake                                   !
+<varname_lakeModelType>    lake_type_Doll                            ! if all reservoirs are natural
+<varname_D03_Coefficient>  D03_Coef                                  !
+<varname_D03_Power>        D03_Power                                 !
+<varname_D03_MaxStorage>   D03_S_max                                 ! maximume lake volume
+<varname_D03_S0>           D03_S_0                                   ! inactive lake volume
+<varname_H06_Smax>         lake_vol                                  !
+<varname_H06_S_ini>        lake_vol                                  !
+<varname_H06_alpha>        H06_alpha                                 !
+<varname_H06_envfact>      H06_envfact                               !
+<varname_H06_c1>           H06_c1                                    !
+<varname_H06_c2>           H06_c2                                    !
+<varname_H06_exponent>     H06_exponent                              !
+<varname_H06_denominator>  H06_denominator                           !
+<varname_H06_c_compare>    H06_c_compare                             !
+<varname_H06_frac_Sdead>   H06_frac_Sdead                            !
+<varname_H06_I_mem_F>      H06_I_mem_F                               !
+<varname_H06_D_mem_F>      H06_D_mem_F                               !
+<varname_H06_I_mem_L>      H06_I_mem_L                               !
+<varname_H06_D_mem_L>      H06_D_mem_L                               !
+<varname_H06_E_rel_ini>    H06_E_rel_init                            !
+<varname_H06_purpose>      H06_purpose                               !
+<varname_H06_I_Jan>        H06_I_Jan                                 !
+<varname_H06_I_Feb>        H06_I_Feb                                 !
+<varname_H06_I_Mar>        H06_I_Mar                                 !
+<varname_H06_I_Apr>        H06_I_Apr                                 !
+<varname_H06_I_May>        H06_I_May                                 !
+<varname_H06_I_Jun>        H06_I_Jun                                 !
+<varname_H06_I_Jul>        H06_I_Jul                                 !
+<varname_H06_I_Aug>        H06_I_Aug                                 !
+<varname_H06_I_Sep>        H06_I_Sep                                 !
+<varname_H06_I_Oct>        H06_I_Oct                                 !
+<varname_H06_I_Nov>        H06_I_Nov                                 !
+<varname_H06_I_Dec>        H06_I_Dec                                 !
+<varname_H06_D_Jan>        H06_D_Jan                                 !
+<varname_H06_D_Feb>        H06_D_Feb                                 !
+<varname_H06_D_Mar>        H06_D_Mar                                 !
+<varname_H06_D_Apr>        H06_D_Apr                                 !
+<varname_H06_D_May>        H06_D_May                                 !
+<varname_H06_D_Jun>        H06_D_Jun                                 !
+<varname_H06_D_Jul>        H06_D_Jul                                 !
+<varname_H06_D_Aug>        H06_D_Aug                                 !
+<varname_H06_D_Sep>        H06_D_Sep                                 !
+<varname_H06_D_Oct>        H06_D_Oct                                 !
+<varname_H06_D_Nov>        H06_D_Nov                                 !
+<varname_H06_D_Dec>        H06_D_Dec                                 !
+<varname_HYP_E_emr>        HYPE_SPL_EL                               !
+<varname_HYP_Qrate_emr>    HYPE_SPL_COEFF                            !
+<varname_HYP_Erate_emr>    HYPE_SPL_EXP                              !
+<varname_HYP_E_lim>        HYPE_LIM_EL                               !
+<varname_HYP_E_min>        HYPE_MIN_EL                               !
+<varname_HYP_E_zero>       HYPE_ZERO_EL                              !
+<varname_HYP_Qrate_amp>    HYPE_PRIM_AMP                             !
+<varname_HYP_Qrate_phs>    HYPE_PRIM_PHASE                           !
+<varname_HYP_Qrate_prim>   HYPE_PRIM_MEAN                            !
+<varname_HYP_prim_F>       HYPE_PRIM_FLAG                            !
+<varname_HYP_A_avg>        area                                      !
+! ****************************************************************************************************************************
+! ****************************************************************************************************************************
+! ****************************************************************************************************************************

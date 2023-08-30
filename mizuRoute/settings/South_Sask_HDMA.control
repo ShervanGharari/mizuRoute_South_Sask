@@ -12,7 +12,6 @@
 <sim_start>             1970-01-01                                   ! time of simulation start (year-month-day)
 <sim_end>               2020-01-01                                   ! time of simulation end (year-month-day)
 <route_opt>             1                                            ! option for routing schemes 0-> both, 1->IRF, 2->KWT otherwise error
-<is_lake_sim>           T                                            ! identifies the lake simulation is ON
 <restart_write>         last                                         ! output state of the last state
 ! ****************************************************************************************************************************
 ! DEFINE DIRECTORIES
@@ -44,6 +43,7 @@
 <dname_ylat>            lat                                          ! name of y(i) dimension
 <units_qsim>            mm/day                                       ! units of runoff
 <dt_qsim>               86400                                        ! time interval of the runoff
+<input_fillvalue>       -9999  !
 ! ****************************************************************************************************************************
 ! DEFINE RUNOFF MAPPING FILE
 ! ----------------------------------

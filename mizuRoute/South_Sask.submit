@@ -2,9 +2,9 @@
 #SBATCH --account=rpp-kshook
 #SBATCH --ntasks=1
 #SBATCH --mem-per-cpu=1G
-#SBATCH --time=1:00:00           # time (DD-HH:MM)
-#SBATCH --job-name=lake_victoria
-#SBATCH --error=errors_lake_victoria
+#SBATCH --time=3:00:00           # time (DD-HH:MM)
+#SBATCH --job-name=south_sask
+#SBATCH --error=south_sask_error
 
 # load the needed libraries
 module load intel/2020.1.217 openmpi netcdf netcdf-fortran pnetcdf
@@ -17,3 +17,7 @@ srun ./route_runoff.exe ./settings/South_Sask_HDMA_lake_Doll_HYPE_HANASAKI.contr
 srun ./route_runoff.exe ./settings/South_Sask_HDMA_lake_Doll_HYPE.control
 srun ./route_runoff.exe ./settings/South_Sask_HDMA_lake_Doll.control
 srun ./route_runoff.exe ./settings/South_Sask_HDMA.control
+srun ./route_runoff.exe ./settings/South_Sask_merit_lake_Doll_HYPE_HANASAKI.control
+srun ./route_runoff.exe ./settings/South_Sask_merit_lake_Doll_HYPE.control
+srun ./route_runoff.exe ./settings/South_Sask_merit_lake_Doll.control
+srun ./route_runoff.exe ./settings/South_Sask_merit.control
